@@ -14,7 +14,7 @@ const uploadToCloudinary = async(localFilePath, filename) => {
         // un nombre diferente a la carpeta donde queramos subir nuestros archivos
         // a cloudinary
         const folder = "backend-final";
-        const filePathOnCloudinary = folder + "/" + path.parse(filename).name;
+        const filePathOnCloudinary = folder + "/" + path.parse(filename).name; //backend-final
         const result = await cloudinary.uploader.upload( 
             localFilePath, 
             { "public_id": filePathOnCloudinary }
