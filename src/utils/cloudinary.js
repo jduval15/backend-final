@@ -30,6 +30,8 @@ const uploadToCloudinary = async(localFilePath, filename) => {
 
 const deleteFromCloudinary = async(publicId) => {
     try {
+        const imageName = url.split(folder)[1];
+        const publicId = folder+imageName.split('.')[0];
         await cloudinary.uploader.destroy(publicId);
     } catch (error) {
         console.log(error);
