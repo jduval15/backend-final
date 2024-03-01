@@ -2,8 +2,8 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/connection');
 
 const ProductImg = sequelize.define('productImg', {
-    url: {
-        type: DataTypes.TEXT,
+    image: {
+        type: DataTypes.STRING,
         allowNull: false
     },
     filename: {
