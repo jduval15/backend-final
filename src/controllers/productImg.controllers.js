@@ -10,8 +10,8 @@ const getAll = catchError(async (req, res) => {
 
 const create = catchError(async (req, res) => {
     const { filename } = req.file  
-    const image = `${req.protocol}://${req.headers.host}/uploads/${filename}`
-    const newBody = { filename, image }
+    const url = `${req.protocol}:/${req.headers.host}/uploads/${filename}`
+    const newBody = { filename, url }
     const result = await ProductImg.create(newBody)
     return res.status(201).json(result)
 })
