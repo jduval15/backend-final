@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/connection');
 
 const ProductImg = sequelize.define('productImg', {
-    image: {
+    url: {
         type: DataTypes.STRING,
         allowNull: false
     },
