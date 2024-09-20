@@ -9,14 +9,21 @@ cloudinary.config({
 });
 
 const uploadToCloudinary = async(localFilePath, filename) => {
+    const SAFE_ROOT = "/path/to/safe/directory";
     try {
+        // Normalize the local file path
+        const normalizedPath = path.resolve(localFilePath);
+        // Check if the normalized path is within the safe root directory
+        if (!normalizedPath.startsWith(SAFE_ROOT)) {
+            throw new Error("Invalid file path");
+        }
         // Aquí le podemos cambiar el nombre a la carpeta de "main", y ponerle
         // un nombre diferente a la carpeta donde queramos subir nuestros archivos
         // a cloudinary
         const folder = "backend-final";
         const filePathOnCloudinary = folder + "/" + path.parse(filename).name; //backend-final
         const result = await cloudinary.uploader.upload( 
-            localFilePath, 
+            normalizedPath, 
             { "public_id": filePathOnCloudinary }
         )
         return result;
