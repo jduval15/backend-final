@@ -15,7 +15,7 @@ routerProduct.route('/')
   .post(verifyJWT, create);
 
 routerProduct.route('/:id/images')
-  .post(verifyJWT, setImages)
+  .post(verifyJWT, limiter, setImages)
 
 routerProduct.route('/:id')
   .get(getOne)
