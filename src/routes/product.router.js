@@ -20,6 +20,6 @@ routerProduct.route('/:id/images')
 routerProduct.route('/:id')
   .get(limiter, getOne)
   .delete(limiter, verifyJWT, remove)
-  .put(verifyJWT, limiter, update);
+  .put(limiter, verifyJWT, update);
 
 module.exports = routerProduct;
