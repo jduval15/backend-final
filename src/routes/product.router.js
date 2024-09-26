@@ -18,7 +18,7 @@ routerProduct.route('/:id/images')
   .post(verifyJWT, limiter, setImages)
 
 routerProduct.route('/:id')
-  .get(getOne)
+  .get(limiter, getOne)
   .delete(verifyJWT, limiter, remove)
   .put(verifyJWT, limiter, update);
 
