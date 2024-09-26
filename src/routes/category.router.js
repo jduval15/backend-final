@@ -7,7 +7,7 @@ const routerCategory = express.Router();
 
 routerCategory.route('/')
   .get(getAll)
-  .post(verifyJWT, postLimiter, create);
+  .post(postLimiter, verifyJWT, create);
 
 const deleteLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
