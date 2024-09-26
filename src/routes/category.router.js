@@ -19,7 +19,12 @@ const postLimiter = rateLimit({
   max: 20, // limit each IP to 20 requests per windowMs
 });
 
+const verifyLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 50, // limit each IP to 50 requests per windowMs
+});
+
 routerCategory.route('/:id')
-  .delete(verifyJWT, deleteLimiter, remove)
+  .delete(verifyLimiter, verifyJWT, deleteLimiter, remove)
 
 module.exports = routerCategory;
