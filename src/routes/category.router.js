@@ -14,7 +14,12 @@ routerCategory.route('/')
   .get(getAll)
   .post(createCategoryLimiter, verifyJWT, create);
 
+const deleteLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10, // limit each IP to 10 requests per windowMs
+});
+
 routerCategory.route('/:id')
-  .delete(verifyJWT, remove)
+  .delete(verifyJWT, deleteLimiter, remove)
 
 module.exports = routerCategory;
