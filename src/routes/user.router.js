@@ -10,7 +10,7 @@ const limiter = rateLimit({
 const routerUser = express.Router();
 
 routerUser.route('/')
-  .get(verifyJWT, getAll)
+  .get(limiter, verifyJWT, getAll)
   .post(create);
 
 routerUser.route('/login')
