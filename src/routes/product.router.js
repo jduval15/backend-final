@@ -12,7 +12,7 @@ const limiter = rateLimit({
 
 routerProduct.route('/')
   .get(getAll)
-  .post(verifyJWT, create);
+  .post(verifyJWT, limiter, create);
 
 routerProduct.route('/:id/images')
   .post(verifyJWT, limiter, setImages)
